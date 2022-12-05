@@ -1,6 +1,6 @@
 # Uvod u JavaScript prototipove
 
-Objekti u JavaScriptu imaju interni property poznato kao prototip. To je jednostavna referenca na drugi objekat i sadrži zajedničke atribute/properties u svim instancama objekta. Atribut prototipa objekta specificira objekt od kojeg nasleđuje svojstva. npr.
+Objekti u JavaScriptu imaju interni property poznat kao prototip. To je jednostavna referenca na drugi objekat i sadrži zajedničke atribute/properties u svim instancama objekta. Atribut prototipa objekta specificira objekt od kojeg nasleđuje svojstva. npr.
 
 ```
 let numArray = [14, 52, 5, 10];
@@ -16,9 +16,9 @@ Zbog toga možete koristiti metodu kao što je **sort()** na instanci polja.
 console.log(numArray.sort()); // -> [5, 10, 14, 52]
 ```
 
-Ista stvar vrijedi i za druge objekte kao što su **Date()**, **String()**, **Function()** itd.
+Ista stvar vredi i za druge objekte kao što su **Date()**, **String()**, **Function()** itd.
 
-Kada se izgradi funkcija konstruktora (poznata i kao pseudo classical inheritance), novostvoreni objekti nasljeđuju svojstva prototipa funkcije konstruktora. One (konstruktorske funkcije) su izgrađene za inicijalizaciju novostvorenih objekata. Konstruktori se pozivaju korištenjem ***new*** ključne riječi.
+Kada se izgradi funkcija konstruktora (poznata i kao pseudo classical inheritance), novostvoreni objekti nasleđuju svojstva prototipa funkcije konstruktora. One (konstruktorske funkcije) su izgrađene za inicijalizaciju novostvorenih objekata. Konstruktori se pozivaju korištenjem ***new*** ključne reči.
 
 ```
 // Ovde funkcija ima ulogu funkcijskog konstruktora.
@@ -72,7 +72,7 @@ sportCar.startEngine("458");
 // → Engine of Ferrari 458 is started
 ```
 
-**ProtoCar** deluje kao storage za svojstva koja dele svi auti. Pojedinačni objekat car, poput **sportCar**, sadrži svojstva koja se odnose samo na njega samog - u ovom slučaju njegov tip i izvodi zajednička svojstva iz svog prototipa.
+**ProtoCar** deluje kao storage za svojstva koju dele svi auti. Pojedinačni objekat car, poput **sportCar**, sadrži svojstva koja se odnose samo na njega samog. U ovom slučaju njegov tip i izvodi zajednička svojstva iz svog prototipa.
 
 Pogledajmo ovaj kod:
 
@@ -92,8 +92,6 @@ for (let k in myObject) {
 ```
 
 Ali, ako **x** nije pronađen na myObjectu, njegov lanac prototipa, ako nije prazan, on se proverava. Ovaj proces se nastavlja sve dok se ne pronađe odgovarajući naziv svojstva ili dok se lanac prototipa ne završi. Ako se do kraja lanca ne pronađe odgovarajuće svojstvo, konačni rezultat operacije je **undefined**.
-
-Slično ovom procesu traženja lanca prototipa, ako koristite petlju for..in za ponavljanje preko objekta, svako svojstvo do kojeg se može doći preko njegovog lanca, a također je nabrojivo, bit će nabrojano. Ako koristite in operator za testiranje postojanja svojstva na objektu, on će provjeriti cijeli lanac objekta (bez obzira na nabrojivost).
 
 ## Napomena 
 
