@@ -59,15 +59,75 @@ Iz gornjeg primera, funkcije **carDate**, **getColor** i **getModel** svojstva s
 Kada objekat dobije zahtjev za svojstvo koje nema, njegov prototip će se tražiti u drugom prototipu, zatim prototipu prototipa, i tako dalje. Dakle, ko je prototip objekta? To je predak prototip, entitet koji stoji iza gotovo svih objekata, **Object.prototype**. Mnogi objekti nemaju izravno **Object.prototype** kao svoj prototip, već umesto toga imaju drugi objekat koji pruža drugačiji skup zadanih svojstava. Funkcije proizlaze iz **Function.prototype**, a arrays proizlaze iz **Array.prototype** i tako dalje.
 
 ```
-let car = {
-  color: 'red',
+let protoCar = {
+  color: 'Red',
   startEngine(model) {
     console.log(`Engine of ${this.brand} ${model} is started`);
   }
 };
 
-let sportCar = Object.create(car);
+let sportCar = Object.create(protoCar);
 sportCar.brand = "Ferrari";
 sportCar.startEngine("458");
 // → Engine of Ferrari 458 is started
 ```
+
+**ProtoCar** deluje kao storage za svojstva koja dele svi auti. Pojedinačni objekat car, poput **sportCar**, sadrži svojstva koja se odnose samo na njega samog - u ovom slučaju njegov tip i izvodi zajednička svojstva iz svog prototipa.
+
+Pogledajmo ovaj kod:
+
+```
+let mainObject = {
+  x: 2
+};
+
+let myObject = Object.create( mainObject );
+
+for (let k in myObject) {
+  console.log("found: " + k);
+}
+
+// found: x
+("x" in myObject);  // true
+```
+
+Ali, ako **x** nije pronađen na myObjectu, njegov lanac prototipa, ako nije prazan, on se proverava. Ovaj proces se nastavlja sve dok se ne pronađe odgovarajući naziv svojstva ili dok se lanac prototipa ne završi. Ako se do kraja lanca ne pronađe odgovarajuće svojstvo, konačni rezultat operacije je **undefined**.
+
+Slično ovom procesu traženja lanca prototipa, ako koristite petlju for..in za ponavljanje preko objekta, svako svojstvo do kojeg se može doći preko njegovog lanca, a također je nabrojivo, bit će nabrojano. Ako koristite in operator za testiranje postojanja svojstva na objektu, on će provjeriti cijeli lanac objekta (bez obzira na nabrojivost).
+
+## Napomena 
+
+```
+let protoCar = {
+  color: 'Red',
+  startEngine(model) {
+    console.log(`Engine of ${this.brand} ${model} is started`);
+  }
+};
+
+let sportCar = Object.create(protoCar);
+sportCar.brand = "Ferrari";
+sportCar.startEngine("458");
+// → Engine of Ferrari 458 is started
+```
+
+Gore naveden kod se može takođe napisati kao:
+
+```
+let protoCar = function(brend, model, color) {
+  this.brend = brend;
+  this.model = model;
+  this.color = color;
+};
+
+protoCar.prototype.getColor = function() {
+  return this.color;
+}
+protoCar.prototype.startEngine = function() {
+  console.log(`Engine of ${this.brand} ${this.model} is started`);
+}
+
+let sportCar = new protoCar('Ferrari', '458!', 'Red');
+sportCar.startEngine();
+```
+
