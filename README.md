@@ -50,3 +50,24 @@ let firstCar = new Car('red', 'Ferrari', '1985');
 console.log(firstCar);
 console.log(firstCar.carDate()); // à This Ferrari was manufactured in the year 1985.
 ```
+<img width="529" alt="Screenshot 2022-12-05 at 17 04 31" src="https://user-images.githubusercontent.com/21141150/205684848-e4af7d2b-3c6d-4c5a-9f3b-4ae860429de8.png">
+
+Iz gornjeg primera, funkcije **carDate**, **getColor** i **getModel** svojstva su objekta **Car** i instance objekta Car kao što je firstCar mogu naslijediti sva njegova svojstva.
+
+## Lanac prototipa
+
+Kada objekat dobije zahtjev za svojstvo koje nema, njegov prototip će se tražiti u drugom prototipu, zatim prototipu prototipa, i tako dalje. Dakle, ko je prototip objekta? To je predak prototip, entitet koji stoji iza gotovo svih objekata, **Object.prototype**. Mnogi objekti nemaju izravno **Object.prototype** kao svoj prototip, već umesto toga imaju drugi objekat koji pruža drugačiji skup zadanih svojstava. Funkcije proizlaze iz **Function.prototype**, a arrays proizlaze iz **Array.prototype** i tako dalje.
+
+```
+let car = {
+  color: 'red',
+  startEngine(model) {
+    console.log(`Engine of ${this.brand} ${model} is started`);
+  }
+};
+
+let sportCar = Object.create(car);
+sportCar.brand = "Ferrari";
+sportCar.startEngine("458");
+// → Engine of Ferrari 458 is started
+```
