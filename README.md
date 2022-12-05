@@ -8,7 +8,7 @@ let numArray = [14, 52, 5, 10];
 
 Objekat Array ima prototip **Array.prototype** i instanca objekta, **num**, nasljeđuje properties objekta Array.
 
-<img width="1068" alt="Screenshot 2022-12-05 at 14 48 54" src="https://user-images.githubusercontent.com/21141150/205653296-40b02181-e23d-44c6-9828-6301b216b028.png">
+<img width="849" alt="Screenshot 2022-12-05 at 18 40 36" src="https://user-images.githubusercontent.com/21141150/205705521-fffd20c0-f0c6-4207-840d-d90c1729bd84.png">
 
 Zbog toga možete koristiti metodu kao što je **sort()** na instanci polja.
 
