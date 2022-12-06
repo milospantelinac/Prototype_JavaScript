@@ -56,7 +56,7 @@ Iz gornjeg primera, funkcije **carDate**, **getColor** i **getModel** svojstva s
 
 ## Lanac prototipa
 
-Kada objekat dobije zahtjev za svojstvo koje nema, njegov prototip će se tražiti u drugom prototipu, zatim prototipu prototipa, i tako dalje. Dakle, ko je prototip objekta? To je predak prototip, entitet koji stoji iza gotovo svih objekata, **Object.prototype**. Mnogi objekti nemaju izravno **Object.prototype** kao svoj prototip, već umesto toga imaju drugi objekat koji pruža drugačiji skup zadanih svojstava. Funkcije proizlaze iz **Function.prototype**, a arrays proizlaze iz **Array.prototype** i tako dalje.
+Kada objekat dobije zahtjev za svojstvo koje nema, njegov prototip će se tražiti u drugom prototipu, zatim prototipu prototipa, i tako dalje. Dakle, ko je prototip objekta? To je predak prototip, entitet koji stoji iza gotovo svih objekata, **Object.prototype**. Mnogi objekti nemaju direktno **Object.prototype** kao svoj prototip, već umesto toga imaju drugi objekat koji pruža drugačiji skup zadanih svojstava. Funkcije proizlaze iz **Function.prototype**, a arrays proizlaze iz **Array.prototype** i tako dalje.
 
 ```
 let protoCar = {
